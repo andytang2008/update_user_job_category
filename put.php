@@ -1,6 +1,10 @@
 <?php
 /**
-The "User_extracted_infor.txt" file (XML format) obtained by using ALMA User Get API previously will be used.  We get primary id from User_extracted_infor.txt file (XML format) and find the matching primary id from the file named Users_infor_job_category.txt(tab delimited format), then write Job_category and Job_category_description into each user’s XML paragraph and save them back into ALMA User database. By this way, all users’ Job_category and Job_category_description are updated. 
+The "User_extracted_infor.txt" file (XML format) obtained by using ALMA User Get API previously will be used.  
+We get primary id from User_extracted_infor.txt file (XML format) and find the matching primary id from the file 
+named Users_infor_job_category.txt(tab delimited format), then write Job_category and Job_category_description into 
+each user’s XML paragraph and save them back into ALMA User database. By this way, all users’ Job_category and 
+Job_category_description are updated. 
 
 Attention: be sure to test this code in Sandbox before applying it in Production environment.
 Running envirnment: Windows 7 + PHP 7.3.3;
@@ -73,7 +77,11 @@ for ($i=0;$i<count($process);$i++){
 						$xml->job_category=$job_category;
 						$xml->job_category[0]['desc']=$job_description;
 						$xml->job_description=$job_description;
-
+						if($xml->account_type=="EXTERNAL" && $xml->external_id=="SIS_temp" ){
+							$xml->external_id="SIS";
+						}
+                        			unset($xml->user_roles[0]);
+				
 						echo $xml->saveXML();
 						$data=$xml->saveXML();
 						
