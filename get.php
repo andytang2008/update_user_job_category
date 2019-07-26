@@ -1,5 +1,8 @@
 <?php
-/**The first step is to retrieve the data from ALMA server and extract user records upon which we would like to add/modify Job category field. We use ALMA analytics to get the user primary id list which we give the file name of “User_Primary_ID.txt”.We use ALMA User “Get” API to get all of the users' records in XML format, and saved them into one file named “User_extracted_infor.txt”. 
+/**The first step is to retrieve the data from ALMA server and extract user records upon which 
+we would like to add/modify Job category field. We use ALMA analytics to get the user primary id list 
+which we give the file name of “User_Primary_ID.txt”.We use ALMA User “Get” API to get all of the users' records
+in XML format, and saved them into one file named “User_extracted_infor.txt”. 
 
 Attention: be sure to test this code in Sandbox before apply it in Production environment.
 Running envirnment: Windows 7 + PHP 7.3.3;
